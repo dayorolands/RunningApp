@@ -1,11 +1,14 @@
 package com.dayo.runningapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.dayo.runningapp.Other.Constants
+import com.dayo.runningapp.Other.Constants.ACTION_SHOW_TRACKING_FRAGMENT
 import com.dayo.runningapp.R
 import com.dayo.runningapp.db.RunDAO
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        navigateToTrackingFragmentIfNeeded(intent)
+
         setSupportActionBar(toolbar)
         bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
 
@@ -30,5 +35,16 @@ class MainActivity : AppCompatActivity() {
                     else -> bottomNavigationView.visibility = View.INVISIBLE
                 }
             }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        navigateToTrackingFragmentIfNeeded(intent)
+    }
+
+    private fun navigateToTrackingFragmentIfNeeded(intent: Intent?){
+        if(intent?.action == ACTION_SHOW_TRACKING_FRAGMENT){
+            navHostFragment.findNavController().navigate(R.id.action_global_trackingFragment)
+        }
     }
 }
