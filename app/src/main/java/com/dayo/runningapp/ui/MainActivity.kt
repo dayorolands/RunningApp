@@ -1,19 +1,16 @@
 package com.dayo.runningapp.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.dayo.runningapp.Other.Constants
 import com.dayo.runningapp.Other.Constants.ACTION_SHOW_TRACKING_FRAGMENT
 import com.dayo.runningapp.R
-import com.dayo.runningapp.db.RunDAO
+import com.dayo.runningapp.services.TrackingService
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
