@@ -35,7 +35,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
         super.onViewCreated(view, savedInstanceState)
         mapView?.onCreate(savedInstanceState)
         btnToggleRun.setOnClickListener {
-            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+            toggleBtn()
         }
         mapView.getMapAsync {
             map = it
